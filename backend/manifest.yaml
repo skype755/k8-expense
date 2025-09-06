@@ -24,7 +24,7 @@ spec:
       spec:
         containers:
         - name: nginx
-          image: saimaddala/backend:1.0.0
+          image: saimaddala/backend:1.0.1
 ---
 kind: Service
 apiVersion: v1
