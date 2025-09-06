@@ -25,3 +25,18 @@ spec:
         containers:
         - name: nginx
           image: saimaddala/mysql:1.0.0
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: mysql
+  namespace: k8-expense
+spec:
+  selector: # labels are used as selectors
+    app: mysql
+    tier: mysql
+    project: k8-expense
+  ports:
+  - protocol: TCP
+    port: 3306 # service port
+    targetPort: 3306
