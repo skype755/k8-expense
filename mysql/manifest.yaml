@@ -25,4 +25,3 @@ spec:
         containers:
         - name: nginx
           image: saimaddala/mysql:1.0.0
-      
