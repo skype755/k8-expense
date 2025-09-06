@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: vpc
+  # lables of deployment resource
+  labels:
+    app: frontend
+    tier: web 
+    project: expense
+spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: frontend
+        tier: web 
+        project: expense 
+    template:
+      metadata:
+        labels:
+          app: frontend
+          tier: web 
+          project: expense 
+      spec:
+        containers:
+        - name: nginx
+          image: saimaddala/frontend:1.0.1
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: frontend
+  namespace: vpc 
+spec:
+  type: nodePort
+  selector: # labels are used as selectors
+    app: frontend
+    tier: web
+    project: expense
+  ports:
+  - protocol: TCP
+    port: 80 # service port
+    targetPort: 8080
