@@ -32,7 +32,7 @@ metadata:
   name: frontend
   namespace: vpc 
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector: # labels are used as selectors
     app: frontend
     tier: web
